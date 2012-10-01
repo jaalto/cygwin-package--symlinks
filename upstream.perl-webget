@@ -1,0 +1,2 @@
+tag1: symlinks
+  http://packages.debian.org/unstable/symlinks pregexp:orig.tar.gz file:symlinks_1.4.orig.tar.gz new: x:

@@ -1,0 +1,25 @@
+Description: Honor standard compiler flags
+ On Debian systems, they are obtained from dpkg-buildflags.
+Author: Sven Joachim <svenjoac@gmx.de>
+Last-Update: 2011-11-28
+
+---
+ Makefile |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -1,11 +1,12 @@
+ # Makefile for symlinks
+ 
+ CC = gcc
++CFLAGS ?= -O2 -g
+  
+ all: symlinks
+ 
+ symlinks: symlinks.c
+-	$(CC) -Wall -Wstrict-prototypes -O2 ${CFLAGS} -o symlinks symlinks.c
++	$(CC) -o symlinks $(CPPFLAGS) $(CFLAGS) symlinks.c $(LDFLAGS)
+  
+ install: all symlinks.8
+ 	install -m 755 -o root -g root symlinks /usr/local/bin

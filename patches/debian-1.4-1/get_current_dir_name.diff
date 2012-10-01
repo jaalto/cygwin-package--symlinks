@@ -1,0 +1,51 @@
+Description: Fix incorrect shortening in some cases
+ If the path "symlinks" operates on contains itself a symlink,
+ symlinks would be shortened incorrectly.  We solve the problem by
+ building with _D_GNU_SOURCE and using the glibc extension
+ get_current_dir_name() instead of getcwd().
+Author: Sven Joachim <svenjoac@gmx.de>
+Bug-Debian: http://bugs.debian.org/61140
+Last-Update: 2011-11-28
+
+---
+ symlinks.c |   17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+--- a/symlinks.c
++++ b/symlinks.c
+@@ -315,7 +315,12 @@
+ 
+ int main(int argc, char **argv)
+ {
++#if defined (_GNU_SOURCE) && defined (__GLIBC__)
++	static char path[PATH_MAX+2];
++	char* cwd = get_current_dir_name();
++#else
+ 	static char path[PATH_MAX+2], cwd[PATH_MAX+2];
++#endif
+ 	int dircount = 0;
+ 	char c, *p;
+ 
+@@ -324,10 +329,22 @@
+         else
+                 progname++;
+ 
++#if defined (_GNU_SOURCE) && defined (__GLIBC__)
++	if (NULL == cwd) {
++		fprintf(stderr,"get_current_dir_name() failed\n");
++#else
+ 	if (NULL == getcwd(cwd,PATH_MAX)) {
+ 		fprintf(stderr,"getcwd() failed\n");
++#endif
+ 		exit (1);
+ 	}
++#if defined (_GNU_SOURCE) && defined (__GLIBC__)
++	cwd = realloc(cwd, strlen(cwd)+2);
++	if (cwd == NULL) {
++		fprintf(stderr, "realloc() failed\n");
++		exit (1);
++	}
++#endif
+ 	if (!*cwd || cwd[strlen(cwd)-1] != '/')
+ 		strcat(cwd,"/");
+ 
