@@ -1,0 +1,26 @@
+From 1c8a2c38ea0f7357191ad8ee343a60fbae29cc5d Mon Sep 17 00:00:00 2001
+From: Jari Aalto <jari.aalto@cante.net>
+Date: Mon, 1 Oct 2012 18:37:56 +0300
+Subject: [PATCH] cygwin manpage see also
+Organization: Private
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Jari Aalto <jari.aalto@cante.net>
+---
+ symlinks.8 |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/symlinks.8 b/symlinks.8
+index 7aded13..534407a 100644
+--- a/symlinks.8
++++ b/symlinks.8
+@@ -120,4 +120,4 @@ does not recurse or change links across filesystems.
+ has been written by Mark Lord <mlord@pobox.com>, the original developer and maintainer
+ of the IDE Performance Package for linux, the Linux IDE Driver subsystem, hdparm, and a current day libata hacker.
+ .SH SEE ALSO
+-.BR symlink (2)
++.BR readlink(1) realpath(1)
+-- 
+1.7.9
+
