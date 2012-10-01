@@ -3,11 +3,11 @@ symlinks
 
 Scan and change symbolic links
 
-Scan directories for symbolic links and lists them on stdout. Each
-link is prefixed with a classification of relative, absolute,
-dangling, messy, lengthy or other_fs. Symlinks can also convert
-absolute links (within the same filesystem) to relative links and can
-delete messy and dangling links.
+Scan directories for symbolic links and list them on stdout. Each link
+is prefixed with a classification of relative, absolute, dangling,
+messy, lengthy or other_fs. Symlinks can be converted from absolute
+links (within the same filesystem) to relative links. Delete messy and
+dangling links.
 
 Runtime requirements:
   cygwin
@@ -42,23 +42,20 @@ Language:
 ------------------------------------
 
 Build instructions:
-  unpack symlinks-1.2-1-src.tar.bz2
+  unpack symlinks-1.4-1-src.tar.bz2
     if you use setup to install this src package, it will be
     unpacked under /usr/src automatically
   cd /usr/src
   ./symlinks*.sh all
 
 This will create:
-  symlinks-1.2-1.tar.bz2
-  symlinks-1.2-1-src.tar.bz2
+  symlinks-1.4-1.tar.bz2
+  symlinks-1.4-1-src.tar.bz2
 
 -------------------------------------------
 
 Files included in the binary distro:
-
-usr/bin/symlinks.exe
-usr/share/doc/Cygwin/symlinks-1.2.README
-usr/share/man/man8/symlinks.8.gz
+  See Cygwin package archive
 
 ------------------
 
@@ -67,8 +64,11 @@ Port Notes:
 - symlinks.c: Applied Debian diffs
 - Makefile: added install
 
+----- version 1.4-1 -----
+- New upstream release 2012-10-01 Jari Aalto
+
 ----- version 1.2-1 -----
 Initial release
 
-Cygwin port maintained by: Jari Aalto <jari.aalto@poboxes.com>
+Cygwin port maintained by: Jari Aalto <jari.aalto@cante.net>
 
