@@ -1,4 +1,4 @@
-sdesc: "Scan and change symbolic links."
+sdesc: "Scan and change symbolic links"
 ldesc: "Scan directories for symbolic links and list them on stdout. Each link
 is prefixed with a classification of relative, absolute, dangling,
 messy, lengthy or other_fs. Symlinks can be converted from absolute
