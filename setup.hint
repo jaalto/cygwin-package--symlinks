@@ -5,4 +5,4 @@ messy, lengthy or other_fs. Symlinks can be converted from absolute
 links (within the same filesystem) to relative links. Delete messy and
 dangling links."
 category: Utils
-requires: cygwin
+requires:
